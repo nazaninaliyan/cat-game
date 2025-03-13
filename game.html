@@ -1,0 +1,70 @@
+﻿
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cat and Hamburger Game</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin: 0;
+      padding: 0;
+      background-color: #f7f7f7;
+    }
+    #game-container {
+      position: relative;
+      width: 100%;
+      height: 400px;
+      margin-top: 20px;
+      overflow: hidden;
+      background-color: #87CEEB;
+    }
+    #cat {
+      position: absolute;
+      bottom: 50px;
+      left: 50px;
+      width: 100px;
+      cursor: pointer;
+      transition: left 1s ease-in-out;
+    }
+    #hamburger {
+      position: absolute;
+      top: 50px;
+      right: 50px;
+      width: 80px;
+    }
+    #message {
+      margin-top: 20px;
+      font-size: 20px;
+      color: #333;
+    }
+  </style>
+</head>
+<body>
+  <h1>Cat and Hamburger Game</h1>
+  <p>Click on the cat to make it eat the hamburger!</p>
+  <div id="game-container">
+    &nbsp;
+    <img id="cat" src="../Documents/vector/dce92ad-a4d890fb-40ec-4b0b-927d-c675f40053d1.png" alt="Cat" height="135" style="left: 59px; bottom: 42px" width="134"><img id="hamburger" src="../Documents/vector/pngtree-hamburger-png-image_13094305.png" alt="Hamburger" height="58" style="right: 43px; top: 276px" width="56"></div>
+  <div id="message"></div>
+
+  <script>
+    const cat = document.getElementById('cat');
+    const hamburger = document.getElementById('hamburger');
+    const message = document.getElementById('message');
+
+    cat.addEventListener('click', () => {
+      // Move the cat to the hamburger's position
+      const hamburgerPosition = hamburger.getBoundingClientRect();
+      cat.style.left = `${hamburgerPosition.left}px`;
+
+      // Display a message after the cat eats the hamburger
+      setTimeout(() => {
+        message.textContent = 'The cat ate the hamburger!';
+        hamburger.style.display = 'none'; // Hide the hamburger
+      }, 1000); // Delay matches the animation duration
+    });
+  </script>
+</body>
